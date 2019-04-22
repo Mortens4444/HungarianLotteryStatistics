@@ -1,11 +1,3 @@
-Consts/obj/
-Enums/obj/
-Lottó/obj/
-MessageBoxes/obj/
-SourceInfo/obj/
 .vs/
-Lottó/bin/
-MessageBoxes/bin/
-SourceInfo/bin/
-Enums/bin/
-Consts/bin/
+**/bin/
+**/obj/
