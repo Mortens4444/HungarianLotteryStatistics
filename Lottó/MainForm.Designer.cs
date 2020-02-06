@@ -30,6 +30,14 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.p_Main = new System.Windows.Forms.Panel();
+			this.lvDrawings = new System.Windows.Forms.ListView();
+			this.ch_Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.ch_1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.ch_2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.ch_3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.ch_4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.ch_5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.ch_6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.cb_StatisticsFile = new System.Windows.Forms.ComboBox();
 			this.nud_NumberCount = new System.Windows.Forms.NumericUpDown();
 			this.lbl_NumberCount = new System.Windows.Forms.Label();
@@ -78,10 +86,10 @@
 			this.nud_Even = new System.Windows.Forms.NumericUpDown();
 			this.lbl_Odd = new System.Windows.Forms.Label();
 			this.lbl_Even = new System.Windows.Forms.Label();
-			this.rtb_LeastFrequentNumbers = new System.Windows.Forms.RichTextBox();
 			this.lbl_LeastFrequentNumbers = new System.Windows.Forms.Label();
 			this.btn_Download = new System.Windows.Forms.Button();
 			this.lbl_StatisticsFile = new System.Windows.Forms.Label();
+			this.rtb_LeastFrequentNumbers = new System.Windows.Forms.RichTextBox();
 			this.p_Main.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nud_NumberCount)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nud_NotDivisibleByNine)).BeginInit();
@@ -106,6 +114,7 @@
 			// 
 			// p_Main
 			// 
+			this.p_Main.Controls.Add(this.lvDrawings);
 			this.p_Main.Controls.Add(this.cb_StatisticsFile);
 			this.p_Main.Controls.Add(this.nud_NumberCount);
 			this.p_Main.Controls.Add(this.lbl_NumberCount);
@@ -154,15 +163,65 @@
 			this.p_Main.Controls.Add(this.nud_Even);
 			this.p_Main.Controls.Add(this.lbl_Odd);
 			this.p_Main.Controls.Add(this.lbl_Even);
-			this.p_Main.Controls.Add(this.rtb_LeastFrequentNumbers);
 			this.p_Main.Controls.Add(this.lbl_LeastFrequentNumbers);
 			this.p_Main.Controls.Add(this.btn_Download);
 			this.p_Main.Controls.Add(this.lbl_StatisticsFile);
+			this.p_Main.Controls.Add(this.rtb_LeastFrequentNumbers);
 			this.p_Main.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.p_Main.Location = new System.Drawing.Point(0, 0);
 			this.p_Main.Name = "p_Main";
-			this.p_Main.Size = new System.Drawing.Size(1115, 266);
+			this.p_Main.Size = new System.Drawing.Size(1115, 424);
 			this.p_Main.TabIndex = 0;
+			// 
+			// lvDrawings
+			// 
+			this.lvDrawings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.lvDrawings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ch_Date,
+            this.ch_1,
+            this.ch_2,
+            this.ch_3,
+            this.ch_4,
+            this.ch_5,
+            this.ch_6});
+			this.lvDrawings.HideSelection = false;
+			this.lvDrawings.Location = new System.Drawing.Point(546, 219);
+			this.lvDrawings.Name = "lvDrawings";
+			this.lvDrawings.Size = new System.Drawing.Size(557, 193);
+			this.lvDrawings.TabIndex = 53;
+			this.lvDrawings.UseCompatibleStateImageBehavior = false;
+			this.lvDrawings.View = System.Windows.Forms.View.Details;
+			// 
+			// ch_Date
+			// 
+			this.ch_Date.Text = "Húzás dátuma";
+			this.ch_Date.Width = 86;
+			// 
+			// ch_1
+			// 
+			this.ch_1.Text = "1";
+			// 
+			// ch_2
+			// 
+			this.ch_2.Text = "2";
+			// 
+			// ch_3
+			// 
+			this.ch_3.Text = "3";
+			// 
+			// ch_4
+			// 
+			this.ch_4.Text = "4";
+			// 
+			// ch_5
+			// 
+			this.ch_5.Text = "5";
+			// 
+			// ch_6
+			// 
+			this.ch_6.Text = "6";
 			// 
 			// cb_StatisticsFile
 			// 
@@ -174,7 +233,7 @@
 			this.cb_StatisticsFile.Name = "cb_StatisticsFile";
 			this.cb_StatisticsFile.Size = new System.Drawing.Size(326, 21);
 			this.cb_StatisticsFile.TabIndex = 52;
-			this.cb_StatisticsFile.SelectedIndexChanged += new System.EventHandler(this.cb_StatisticsFile_SelectedIndexChanged);
+			this.cb_StatisticsFile.SelectedIndexChanged += new System.EventHandler(this.Cb_StatisticsFile_SelectedIndexChanged);
 			// 
 			// nud_NumberCount
 			// 
@@ -577,7 +636,7 @@
 			this.btn_Statistics.TabIndex = 20;
 			this.btn_Statistics.Text = "Statisztika";
 			this.btn_Statistics.UseVisualStyleBackColor = true;
-			this.btn_Statistics.Click += new System.EventHandler(this.btn_Statistics_Click);
+			this.btn_Statistics.Click += new System.EventHandler(this.Btn_Statistics_Click);
 			// 
 			// chk_DivisibleByFour
 			// 
@@ -768,18 +827,6 @@
 			this.lbl_Even.TabIndex = 5;
 			this.lbl_Even.Text = "Páros";
 			// 
-			// rtb_LeastFrequentNumbers
-			// 
-			this.rtb_LeastFrequentNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.rtb_LeastFrequentNumbers.Location = new System.Drawing.Point(14, 219);
-			this.rtb_LeastFrequentNumbers.Name = "rtb_LeastFrequentNumbers";
-			this.rtb_LeastFrequentNumbers.ReadOnly = true;
-			this.rtb_LeastFrequentNumbers.Size = new System.Drawing.Size(1092, 35);
-			this.rtb_LeastFrequentNumbers.TabIndex = 4;
-			this.rtb_LeastFrequentNumbers.Text = "";
-			// 
 			// lbl_LeastFrequentNumbers
 			// 
 			this.lbl_LeastFrequentNumbers.AutoSize = true;
@@ -797,7 +844,7 @@
 			this.btn_Download.TabIndex = 2;
 			this.btn_Download.Text = "Letöltés";
 			this.btn_Download.UseVisualStyleBackColor = true;
-			this.btn_Download.Click += new System.EventHandler(this.btn_Download_Click);
+			this.btn_Download.Click += new System.EventHandler(this.Btn_Download_Click);
 			// 
 			// lbl_StatisticsFile
 			// 
@@ -808,11 +855,23 @@
 			this.lbl_StatisticsFile.TabIndex = 0;
 			this.lbl_StatisticsFile.Text = "Statisztika fájl";
 			// 
+			// rtb_LeastFrequentNumbers
+			// 
+			this.rtb_LeastFrequentNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.rtb_LeastFrequentNumbers.Location = new System.Drawing.Point(14, 219);
+			this.rtb_LeastFrequentNumbers.Name = "rtb_LeastFrequentNumbers";
+			this.rtb_LeastFrequentNumbers.ReadOnly = true;
+			this.rtb_LeastFrequentNumbers.Size = new System.Drawing.Size(526, 193);
+			this.rtb_LeastFrequentNumbers.TabIndex = 4;
+			this.rtb_LeastFrequentNumbers.Text = "";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1115, 266);
+			this.ClientSize = new System.Drawing.Size(1115, 424);
 			this.Controls.Add(this.p_Main);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "MainForm";
@@ -898,6 +957,14 @@
 		private System.Windows.Forms.NumericUpDown nud_NumberCount;
 		private System.Windows.Forms.Label lbl_NumberCount;
 		private System.Windows.Forms.ComboBox cb_StatisticsFile;
+		private System.Windows.Forms.ListView lvDrawings;
+		private System.Windows.Forms.ColumnHeader ch_1;
+		private System.Windows.Forms.ColumnHeader ch_2;
+		private System.Windows.Forms.ColumnHeader ch_3;
+		private System.Windows.Forms.ColumnHeader ch_4;
+		private System.Windows.Forms.ColumnHeader ch_5;
+		private System.Windows.Forms.ColumnHeader ch_6;
+		private System.Windows.Forms.ColumnHeader ch_Date;
 	}
 }
 

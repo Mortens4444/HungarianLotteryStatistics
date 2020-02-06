@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Collections.Generic;
 using MessageBoxes;
+using System.Linq;
+using System.Drawing;
 
 namespace Lottó
 {
@@ -18,7 +20,7 @@ namespace Lottó
 			cb_StatisticsFile.SelectedIndex = 0;
 		}
 
-		private void cb_StatisticsFile_SelectedIndexChanged(object sender, EventArgs e)
+		private void Cb_StatisticsFile_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			switch (cb_StatisticsFile.SelectedIndex)
 			{
@@ -33,7 +35,7 @@ namespace Lottó
 			}
 		}
 
-		private void btn_Download_Click(object sender, EventArgs e)
+		private void Btn_Download_Click(object sender, EventArgs e)
 		{
 			fileName = Path.Combine(Application.StartupPath, cb_StatisticsFile.Text.Substring(cb_StatisticsFile.Text.LastIndexOf('/') + 1));
             FileDownloader.DownloadFileAsync(cb_StatisticsFile.Text, fileName, Completed);
@@ -44,7 +46,7 @@ namespace Lottó
 			GetStatistics((byte)nud_MinValue.Value, (byte)nud_MaxValue.Value, (byte)nud_NumberCount.Value);
 		}
 
-		private void btn_Statistics_Click(object sender, EventArgs e)
+		private void Btn_Statistics_Click(object sender, EventArgs e)
 		{
 			fileName = Path.Combine(Application.StartupPath, cb_StatisticsFile.Text.Substring(cb_StatisticsFile.Text.LastIndexOf('/') + 1));
 			GetStatistics((byte)nud_MinValue.Value, (byte)nud_MaxValue.Value, (byte)nud_NumberCount.Value);
@@ -54,6 +56,7 @@ namespace Lottó
 		{
 			try
 			{
+				lvDrawings.Items.Clear();
 				var drawings = new List<Drawing>();
                 var rows = FileReader.GetFileContent(fileName).SplitOnNewLines();
 				for (int i = 0; i < rows.Length; i++)
@@ -86,11 +89,17 @@ namespace Lottó
                         }
 
 						drawings.Add(draw);
+						var item = new ListViewItem(draw.DrawingDate.ToShortDateString());
+						foreach (var number in draw.Numbers)
+						{
+							item.SubItems.Add(number.ToString());
+						}
+						lvDrawings.Items.Add(item);
 					}
 				}
 
 				var stats = new Statistics(min_value, max_value, drawings);
-				rtb_LeastFrequentNumbers.Text = stats.LeastFrequentNumbers;
+				rtb_LeastFrequentNumbers.Text = Statistics.ArrayToString(stats.LeastFrequentNumbers);
 
 				nud_Even.Value = stats.Even;
 				nud_Odd.Value = stats.Odd;
@@ -139,6 +148,37 @@ namespace Lottó
 				if (8 * nud_DivisibleByNine.Value + 5 > nud_NotDivisibleByNine.Value) chk_DivisibleByNine.CheckState = CheckState.Unchecked;
 				else if (8 * nud_DivisibleByNine.Value > nud_NotDivisibleByNine.Value) chk_DivisibleByNine.CheckState = CheckState.Indeterminate;
 				else chk_DivisibleByNine.CheckState = CheckState.Checked;
+
+				var count = stats.LeastFrequentNumbers.Length / 4;
+				var leastFrequentNumbers = stats.LeastFrequentNumbers.Take(count).ToList();
+				var leastFrequentNumbers2 = stats.LeastFrequentNumbers.Skip(count).Take(count).ToList();
+				var frequentNumbers = stats.LeastFrequentNumbers.Skip(stats.LeastFrequentNumbers.Length - count).ToList();
+				var frequentNumbers2 = stats.LeastFrequentNumbers.Skip(stats.LeastFrequentNumbers.Length - (2 * count)).Take(count).ToList();
+
+				foreach (ListViewItem item in lvDrawings.Items)
+				{
+					for (int i = 1; i < item.SubItems.Count; i++)
+					{
+						var number = Convert.ToByte(item.SubItems[i].Text);
+						if (frequentNumbers.Contains(number))
+						{
+							item.SubItems[i].ForeColor = Color.Red;
+						}
+						else if (leastFrequentNumbers.Contains(number))
+						{
+							item.SubItems[i].ForeColor = Color.Blue;
+						}
+						else if (frequentNumbers2.Contains(number))
+						{
+							item.SubItems[i].ForeColor = Color.Orange;
+						}
+						else if (leastFrequentNumbers2.Contains(number))
+						{
+							item.SubItems[i].ForeColor = Color.Green;
+						}
+						item.UseItemStyleForSubItems = false;
+					}
+				}
 			}
 			catch (Exception ex)
 			{

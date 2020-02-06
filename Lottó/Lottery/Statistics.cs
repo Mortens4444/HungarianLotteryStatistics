@@ -6,10 +6,10 @@ namespace Lottó
 {
     public class Statistics
     {
-        private byte min;
-        private byte max;
-        private byte intervalMiddle_1;
-        private byte intervalMiddle_2;
+        private readonly byte min;
+        private readonly byte max;
+        private readonly byte intervalMiddle_1;
+        private readonly byte intervalMiddle_2;
 
         private uint[] frequencies;
         private readonly byte[] leastFrequentNumbers;
@@ -157,11 +157,11 @@ namespace Lottó
             return String.Join(", ", array);
         }
 
-        public string LeastFrequentNumbers
+        public byte[] LeastFrequentNumbers
         {
             get
             {
-                return ArrayToString(leastFrequentNumbers);
+                return leastFrequentNumbers;
             }
         }
 
