@@ -30,6 +30,8 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.p_Main = new System.Windows.Forms.Panel();
+			this.label1 = new System.Windows.Forms.Label();
+			this.nudGroupCount = new System.Windows.Forms.NumericUpDown();
 			this.lvDrawings = new System.Windows.Forms.ListView();
 			this.ch_Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.ch_1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -91,6 +93,7 @@
 			this.lbl_StatisticsFile = new System.Windows.Forms.Label();
 			this.rtb_LeastFrequentNumbers = new System.Windows.Forms.RichTextBox();
 			this.p_Main.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudGroupCount)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nud_NumberCount)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nud_NotDivisibleByNine)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.nud_DivisibleByNine)).BeginInit();
@@ -114,6 +117,8 @@
 			// 
 			// p_Main
 			// 
+			this.p_Main.Controls.Add(this.label1);
+			this.p_Main.Controls.Add(this.nudGroupCount);
 			this.p_Main.Controls.Add(this.lvDrawings);
 			this.p_Main.Controls.Add(this.cb_StatisticsFile);
 			this.p_Main.Controls.Add(this.nud_NumberCount);
@@ -173,11 +178,44 @@
 			this.p_Main.Size = new System.Drawing.Size(1115, 424);
 			this.p_Main.TabIndex = 0;
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(215, 125);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(72, 13);
+			this.label1.TabIndex = 55;
+			this.label1.Text = "Csoport méret";
+			// 
+			// nudGroupCount
+			// 
+			this.nudGroupCount.Location = new System.Drawing.Point(293, 123);
+			this.nudGroupCount.Maximum = new decimal(new int[] {
+            22,
+            0,
+            0,
+            0});
+			this.nudGroupCount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.nudGroupCount.Name = "nudGroupCount";
+			this.nudGroupCount.Size = new System.Drawing.Size(45, 20);
+			this.nudGroupCount.TabIndex = 54;
+			this.nudGroupCount.Value = new decimal(new int[] {
+            22,
+            0,
+            0,
+            0});
+			this.nudGroupCount.ValueChanged += new System.EventHandler(this.NudGroupCount_ValueChanged);
+			// 
 			// lvDrawings
 			// 
 			this.lvDrawings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.lvDrawings.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
 			this.lvDrawings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ch_Date,
             this.ch_1,
@@ -186,6 +224,7 @@
             this.ch_4,
             this.ch_5,
             this.ch_6});
+			this.lvDrawings.FullRowSelect = true;
 			this.lvDrawings.HideSelection = false;
 			this.lvDrawings.Location = new System.Drawing.Point(546, 219);
 			this.lvDrawings.Name = "lvDrawings";
@@ -244,6 +283,7 @@
             0,
             0});
 			this.nud_NumberCount.Name = "nud_NumberCount";
+			this.nud_NumberCount.ReadOnly = true;
 			this.nud_NumberCount.Size = new System.Drawing.Size(66, 20);
 			this.nud_NumberCount.TabIndex = 51;
 			this.nud_NumberCount.Value = new decimal(new int[] {
@@ -585,6 +625,7 @@
             0,
             0});
 			this.nud_MaxValue.Name = "nud_MaxValue";
+			this.nud_MaxValue.ReadOnly = true;
 			this.nud_MaxValue.Size = new System.Drawing.Size(66, 20);
 			this.nud_MaxValue.TabIndex = 24;
 			this.nud_MaxValue.Value = new decimal(new int[] {
@@ -592,6 +633,7 @@
             0,
             0,
             0});
+			this.nud_MaxValue.ValueChanged += new System.EventHandler(this.Nud_MaxValue_ValueChanged);
 			// 
 			// lbl_MaxValue
 			// 
@@ -611,6 +653,7 @@
             0,
             0});
 			this.nud_MinValue.Name = "nud_MinValue";
+			this.nud_MinValue.ReadOnly = true;
 			this.nud_MinValue.Size = new System.Drawing.Size(66, 20);
 			this.nud_MinValue.TabIndex = 22;
 			this.nud_MinValue.Value = new decimal(new int[] {
@@ -857,9 +900,8 @@
 			// 
 			// rtb_LeastFrequentNumbers
 			// 
-			this.rtb_LeastFrequentNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.rtb_LeastFrequentNumbers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
 			this.rtb_LeastFrequentNumbers.Location = new System.Drawing.Point(14, 219);
 			this.rtb_LeastFrequentNumbers.Name = "rtb_LeastFrequentNumbers";
 			this.rtb_LeastFrequentNumbers.ReadOnly = true;
@@ -879,6 +921,7 @@
 			this.Text = "Lottó";
 			this.p_Main.ResumeLayout(false);
 			this.p_Main.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudGroupCount)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.nud_NumberCount)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.nud_NotDivisibleByNine)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.nud_DivisibleByNine)).EndInit();
@@ -965,6 +1008,8 @@
 		private System.Windows.Forms.ColumnHeader ch_5;
 		private System.Windows.Forms.ColumnHeader ch_6;
 		private System.Windows.Forms.ColumnHeader ch_Date;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.NumericUpDown nudGroupCount;
 	}
 }
 
