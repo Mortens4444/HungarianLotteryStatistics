@@ -100,7 +100,6 @@ namespace Lottó
 				}
 
 				statistics = new Statistics(min_value, max_value, drawings);
-				rtb_LeastFrequentNumbers.Text = Statistics.ArrayToString(statistics.LeastFrequentNumbers);
 
 				nud_Even.Value = statistics.Even;
 				nud_Odd.Value = statistics.Odd;
@@ -160,11 +159,31 @@ namespace Lottó
 
 		private void RecolorItems()
 		{
+			rtb_LeastFrequentNumbers.Text = Statistics.ArrayToString(statistics.LeastFrequentNumbers);
+
 			if (statistics == null)
 			{
 				return;
 			}
 			var count = (int)nudGroupCount.Value;
+			var index = rtb_LeastFrequentNumbers.Text.XThIndexOf(',', count);
+			rtb_LeastFrequentNumbers.Text = rtb_LeastFrequentNumbers.Text.Insert(index, $"{Environment.NewLine}{Environment.NewLine}");
+
+			index = rtb_LeastFrequentNumbers.Text.XThIndexOf(',', 2 * count);
+			rtb_LeastFrequentNumbers.Text = rtb_LeastFrequentNumbers.Text.Insert(index, $"{Environment.NewLine}{Environment.NewLine}");
+
+			index = rtb_LeastFrequentNumbers.Text.XThIndexOf(',', (statistics.LeastFrequentNumbers.Length) - 2 * count);
+			rtb_LeastFrequentNumbers.Text = rtb_LeastFrequentNumbers.Text.Insert(index, $"{Environment.NewLine}{Environment.NewLine}");
+
+			index = rtb_LeastFrequentNumbers.Text.XThIndexOf(',', (statistics.LeastFrequentNumbers.Length) - count);
+			rtb_LeastFrequentNumbers.Text = rtb_LeastFrequentNumbers.Text.Insert(index, $"{Environment.NewLine}{Environment.NewLine}");
+
+			var groups = rtb_LeastFrequentNumbers.Text.SplitOnNewLines(StringSplitOptions.RemoveEmptyEntries);
+			foreach (var group in groups)
+			{
+				rtb_LeastFrequentNumbers.Text = rtb_LeastFrequentNumbers.Text.Replace(group, group.Trim(',', ' '));
+			}
+
 			var leastFrequentNumbers = statistics.LeastFrequentNumbers.Take(count).ToList();
 			var leastFrequentNumbers2 = statistics.LeastFrequentNumbers.Skip(count).Take(count).ToList();
 			var frequentNumbers = statistics.LeastFrequentNumbers.Skip(statistics.LeastFrequentNumbers.Length - count).ToList();
