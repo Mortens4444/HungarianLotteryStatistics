@@ -276,6 +276,11 @@
 			// 
 			// nud_NumberCount
 			// 
+			this.nud_NumberCount.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
 			this.nud_NumberCount.Location = new System.Drawing.Point(111, 148);
 			this.nud_NumberCount.Maximum = new decimal(new int[] {
             255,
@@ -326,6 +331,7 @@
             0,
             0});
 			this.nud_NotDivisibleByNine.Name = "nud_NotDivisibleByNine";
+			this.nud_NotDivisibleByNine.ReadOnly = true;
 			this.nud_NotDivisibleByNine.Size = new System.Drawing.Size(66, 20);
 			this.nud_NotDivisibleByNine.TabIndex = 48;
 			// 
@@ -343,6 +349,7 @@
             0,
             0});
 			this.nud_DivisibleByNine.Name = "nud_DivisibleByNine";
+			this.nud_DivisibleByNine.ReadOnly = true;
 			this.nud_DivisibleByNine.Size = new System.Drawing.Size(66, 20);
 			this.nud_DivisibleByNine.TabIndex = 47;
 			// 
@@ -389,6 +396,7 @@
             0,
             0});
 			this.nud_NotDivisibleByEight.Name = "nud_NotDivisibleByEight";
+			this.nud_NotDivisibleByEight.ReadOnly = true;
 			this.nud_NotDivisibleByEight.Size = new System.Drawing.Size(66, 20);
 			this.nud_NotDivisibleByEight.TabIndex = 43;
 			// 
@@ -406,6 +414,7 @@
             0,
             0});
 			this.nud_DivisibleByEight.Name = "nud_DivisibleByEight";
+			this.nud_DivisibleByEight.ReadOnly = true;
 			this.nud_DivisibleByEight.Size = new System.Drawing.Size(66, 20);
 			this.nud_DivisibleByEight.TabIndex = 42;
 			// 
@@ -452,6 +461,7 @@
             0,
             0});
 			this.nud_NotDivisibleBySeven.Name = "nud_NotDivisibleBySeven";
+			this.nud_NotDivisibleBySeven.ReadOnly = true;
 			this.nud_NotDivisibleBySeven.Size = new System.Drawing.Size(66, 20);
 			this.nud_NotDivisibleBySeven.TabIndex = 38;
 			// 
@@ -469,6 +479,7 @@
             0,
             0});
 			this.nud_DivisibleBySeven.Name = "nud_DivisibleBySeven";
+			this.nud_DivisibleBySeven.ReadOnly = true;
 			this.nud_DivisibleBySeven.Size = new System.Drawing.Size(66, 20);
 			this.nud_DivisibleBySeven.TabIndex = 37;
 			// 
@@ -515,6 +526,7 @@
             0,
             0});
 			this.nud_NotDivisibleBySix.Name = "nud_NotDivisibleBySix";
+			this.nud_NotDivisibleBySix.ReadOnly = true;
 			this.nud_NotDivisibleBySix.Size = new System.Drawing.Size(66, 20);
 			this.nud_NotDivisibleBySix.TabIndex = 33;
 			// 
@@ -532,6 +544,7 @@
             0,
             0});
 			this.nud_DivisibleBySix.Name = "nud_DivisibleBySix";
+			this.nud_DivisibleBySix.ReadOnly = true;
 			this.nud_DivisibleBySix.Size = new System.Drawing.Size(66, 20);
 			this.nud_DivisibleBySix.TabIndex = 32;
 			// 
@@ -578,6 +591,7 @@
             0,
             0});
 			this.nud_NotDivisibleByFive.Name = "nud_NotDivisibleByFive";
+			this.nud_NotDivisibleByFive.ReadOnly = true;
 			this.nud_NotDivisibleByFive.Size = new System.Drawing.Size(66, 20);
 			this.nud_NotDivisibleByFive.TabIndex = 28;
 			// 
@@ -595,6 +609,7 @@
             0,
             0});
 			this.nud_DivisibleByFive.Name = "nud_DivisibleByFive";
+			this.nud_DivisibleByFive.ReadOnly = true;
 			this.nud_DivisibleByFive.Size = new System.Drawing.Size(66, 20);
 			this.nud_DivisibleByFive.TabIndex = 27;
 			// 
@@ -618,6 +633,11 @@
 			// 
 			// nud_MaxValue
 			// 
+			this.nud_MaxValue.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
 			this.nud_MaxValue.Location = new System.Drawing.Point(111, 123);
 			this.nud_MaxValue.Maximum = new decimal(new int[] {
             255,
@@ -646,6 +666,11 @@
 			// 
 			// nud_MinValue
 			// 
+			this.nud_MinValue.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
 			this.nud_MinValue.Location = new System.Drawing.Point(111, 97);
 			this.nud_MinValue.Maximum = new decimal(new int[] {
             255,
@@ -706,6 +731,7 @@
             0,
             0});
 			this.nud_NotDivisibleByFour.Name = "nud_NotDivisibleByFour";
+			this.nud_NotDivisibleByFour.ReadOnly = true;
 			this.nud_NotDivisibleByFour.Size = new System.Drawing.Size(66, 20);
 			this.nud_NotDivisibleByFour.TabIndex = 18;
 			// 
@@ -723,6 +749,7 @@
             0,
             0});
 			this.nud_DivisibleByFour.Name = "nud_DivisibleByFour";
+			this.nud_DivisibleByFour.ReadOnly = true;
 			this.nud_DivisibleByFour.Size = new System.Drawing.Size(66, 20);
 			this.nud_DivisibleByFour.TabIndex = 17;
 			// 
@@ -769,6 +796,7 @@
             0,
             0});
 			this.nud_NotDivisibleByThree.Name = "nud_NotDivisibleByThree";
+			this.nud_NotDivisibleByThree.ReadOnly = true;
 			this.nud_NotDivisibleByThree.Size = new System.Drawing.Size(66, 20);
 			this.nud_NotDivisibleByThree.TabIndex = 13;
 			// 
@@ -786,6 +814,7 @@
             0,
             0});
 			this.nud_DivisibleByThree.Name = "nud_DivisibleByThree";
+			this.nud_DivisibleByThree.ReadOnly = true;
 			this.nud_DivisibleByThree.Size = new System.Drawing.Size(66, 20);
 			this.nud_DivisibleByThree.TabIndex = 12;
 			// 
@@ -832,6 +861,7 @@
             0,
             0});
 			this.nud_Odd.Name = "nud_Odd";
+			this.nud_Odd.ReadOnly = true;
 			this.nud_Odd.Size = new System.Drawing.Size(66, 20);
 			this.nud_Odd.TabIndex = 8;
 			// 
@@ -849,6 +879,7 @@
             0,
             0});
 			this.nud_Even.Name = "nud_Even";
+			this.nud_Even.ReadOnly = true;
 			this.nud_Even.Size = new System.Drawing.Size(66, 20);
 			this.nud_Even.TabIndex = 7;
 			// 

@@ -159,12 +159,12 @@ namespace Lottó
 
 		private void RecolorItems()
 		{
-			rtb_LeastFrequentNumbers.Text = Statistics.ArrayToString(statistics.LeastFrequentNumbers);
-
 			if (statistics == null)
 			{
 				return;
 			}
+
+			rtb_LeastFrequentNumbers.Text = Statistics.ArrayToString(statistics.LeastFrequentNumbers);
 			var count = (int)nudGroupCount.Value;
 			var index = rtb_LeastFrequentNumbers.Text.XThIndexOf(',', count);
 			rtb_LeastFrequentNumbers.Text = rtb_LeastFrequentNumbers.Text.Insert(index, $"{Environment.NewLine}{Environment.NewLine}");
@@ -226,8 +226,8 @@ namespace Lottó
 
 		private void Nud_MaxValue_ValueChanged(object sender, EventArgs e)
 		{
-			nudGroupCount.Value = Math.Truncate(nud_MaxValue.Value / 4);
-			nudGroupCount.Maximum = nudGroupCount.Value;
+			nudGroupCount.Maximum = Math.Truncate(nud_MaxValue.Value / 4);
+			nudGroupCount.Value = nudGroupCount.Maximum;
 		}
 
 		private void NudGroupCount_ValueChanged(object sender, EventArgs e)
